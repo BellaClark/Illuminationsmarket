@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Illuminations</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="/static/first_app/css/style.css"> 
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/first_app/images/illuminations-03.png"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="fixed">
+    <div class="header">
+        <div class="search">
+            <form action="/search" method="POST" id="search_all">
+                {% csrf_token %}
+                 <input type="text" onfocus="this.value=''" id="ajax_art_title" name="search" value="search">
+            </form>
+            <div style="visibility: hidden;" id="placeholder_two">placeholder</div>
+        </div>
+        <div class="logo">
+            <a href="/illuminations"><img style="width: 80px;" src="/static/first_app/images/illuminations-03.png"></a>
+        </div>
+        <div class="nav">
+            <a href="/artists"><h1 class="orange_text">Artists</h1></a>
+            <a href="/artwork"><h1 class="orange_text">Artwork</h1></a>
+        </div>
+        {% if 'user_id' in request.session %}
+        <div class="register">
+            <img style="width: 30px;" src="/static/first_app/images/profile-09.png">
+            <a href="/user_profile/{{ person_logged_in.id }}"><h2 class="orange_text">{{ person_logged_in.first_name|title }}</h2></a>
+            <a href="/logout"><button class="small_button">Logout</button></a>
+            <a href="/cart"><img style="width: 30px; padding: 10px;" src="/static/first_app/images/cart-04.png"></a>
+        </div>
+        {% else %}
+        <div class="register">
+            <a href="/register"><button class="small_button">Register</button></a>
+            <a href="/sign_in"><h2 class="orange_text">Sign In</h2></a>
+        </div>
+        {% endif %}
+    </div>
+    </div>
+    <script>
+            $('#ajax_art_title').keyup(function(){
+                console.log('came here')
+                $.ajax({
+                    url: '/search',
+                    method: 'post',
+                    data: $(this).parent().serialize(),
+                    success: function(serverResponse){
+                        console.log('success', serverResponse)
+                        $('#placeholder_two').html(serverResponse)
+                    }
+                })
+            })
+            $('#ajax_art_title').click(function() {
+                $('#placeholder_two').css({'visibility':'visible'});
+                return false;
+    });
+    </script>
+
+    <div class="center_img">
+        <div class="aesthetic">
+            <h3 style="font-size:5.5vw">FIND YOUR AESTHETIC</h3> 
+        </div>
+        <div class="discover">
+            <a href="/artwork"><button>Discover</button></a>
+        </div>
+        <img style="width: 100%;" src="/static/first_app/images/main_photo.jpg">
+        <div class="artist_index">
+            <h3>Artist</h3>
+            <h4>Valeria Alvarez</h4>
+        </div>
+    </div>
+
+    <div class="imagine">
+        <h4>Imagine the Illuminations</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a quam vehicula, semper nisi vel, bibendum nunc. Pellentesque aliquet elit id nulla posuere condimentum. Nam id suscipit tortor, nec vestibulum velit. Etiam bibendum nec quam non ultricies. Aliquam at laoreet nulla. Nulla erat ligula, ornare sed placera lacus semper iaculis. Phasellus tempus leo eget porttitor elementum. Fusce sit amet lacus in est consectetur posuere.</p>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <img style="width: 120px;" src="/static/first_app/images/discover-06.png">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a quam vehicula, semper nism nunc.</p>
+        </div>
+        <div class="card">
+            <img style="width: 120px;" src="/static/first_app/images/discover-06.png">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a quam vehicula, semper nism nunc.</p>
+        </div>
+        <div class="card">
+            <img style="width: 120px;" src="/static/first_app/images/discover-06.png">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a quam vehicula, semper nism nunc.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h1 style="color: white;">thanks for visiting!</h1>
+    </div>
+
+</body>
+</html>

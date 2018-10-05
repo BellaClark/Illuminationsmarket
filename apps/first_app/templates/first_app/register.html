@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Illuminations</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="/static/first_app/css/style.css"> 
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/first_app/images/illuminations-03.png"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="fixed">
+    <div class="header">
+        <div class="search">
+            <form action="/search" method="POST" id="search_all">
+                {% csrf_token %}
+                 <input type="text" onfocus="this.value=''" id="ajax_art_title" name="search" value="search">
+            </form>
+            <div style="visibility: hidden;" id="placeholder_two">placeholder</div>
+        </div>
+        <div class="logo">
+            <a href="/illuminations"><img style="width: 80px;" src="/static/first_app/images/illuminations-03.png"></a>
+        </div>
+        <div class="nav">
+            <a href="/artists"><h1 class="orange_text">Artists</h1></a>
+            <a href="/artwork"><h1 class="orange_text">Artwork</h1></a>
+        </div>
+        <div class="register">
+            <a href="/register"><button class="small_button">Register</button></a>
+            <a href="/sign_in"><h2 class="orange_text">Sign In</h2></a>
+        </div>
+    </div>
+    </div>
+    <script>
+            $('#ajax_art_title').keyup(function(){
+                console.log('came here')
+                $.ajax({
+                    url: '/search',
+                    method: 'post',
+                    data: $(this).parent().serialize(),
+                    success: function(serverResponse){
+                        console.log('success', serverResponse)
+                        $('#placeholder_two').html(serverResponse)
+                    }
+                })
+            })
+            $('#ajax_art_title').click(function() {
+                $('#placeholder_two').css({'visibility':'visible'});
+                return false;
+    });
+    </script>
+    
+    <div class="sign_in_register">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <h1>Register</h1>
+            <form action="/create_user" method="POST">
+                {% csrf_token %}
+                <p>First Name <input type="text" name="first_name"></p>
+                <p>Last Name <input type="text" name="last_name"></p>
+                <p>Email <input type="email" name="email"></p>
+                <p>Password <input type="password" name="password"></p>
+                <p>Password Confirm <input type="password" name="confirm_password"></p>
+                <button>Register</button>
+            </form>
+        </div>
+
+    <div class="footer">
+        <h1 style="color: white;">thanks for visiting!</h1>
+    </div>
+
+</body>
+</html>

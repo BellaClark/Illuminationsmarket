@@ -1,0 +1,16 @@
+
+<div class="searched">
+    <ul class="search_artworks">
+        <h5>Artworks</h5>
+        {% for a in art%}
+            <a href="/product/{{ a.id }}"><li class="titles">{{ a.title }}</li></a>
+        {% endfor %}
+    </ul>
+    <ul class="search_artists">
+        <h5>Artists</h5>
+        {% for u in user %}
+            <a href="/user_profile/{{ u.id }}"><li class="titles">{{ u.first_name|title }} {{ u.last_name|title }}</li></a>
+        {% endfor %}
+    </ul>
+</div>
+

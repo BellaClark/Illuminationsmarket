@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Illuminations</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="/static/first_app/css/style.css"> 
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/first_app/images/illuminations-03.png"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="fixed">
+    <div class="header">
+        <div class="search">
+            <form action="/search" method="POST" id="search_all">
+                {% csrf_token %}
+                 <input type="text" onfocus="this.value=''" id="ajax_art_title" name="search" value="search">
+            </form>
+            <div style="visibility: hidden;" id="placeholder_two">placeholder</div>
+        </div>
+        <div class="logo">
+            <a href="/illuminations"><img style="width: 80px;" src="/static/first_app/images/illuminations-03.png"></a>
+        </div>
+        <div class="nav">
+            <a href="/artists"><h1 class="orange_text">Artists</h1></a>
+            <a href="/artwork"><h1 class="orange_text">Artwork</h1></a>
+        </div>
+        {% if 'user_id' in request.session %}
+        <div class="register">
+            <img style="width: 30px;" src="/static/first_app/images/profile-09.png">
+            <a href="/user_profile/{{ user.id }}"><h2 class="orange_text">{{ user.first_name|title }}</h2></a>
+            <a href="/logout"><button class="small_button">Logout</button></a>
+            <a href="/cart"><img style="width: 30px; padding: 10px;" src="/static/first_app/images/cart-04.png"></a>
+        </div>
+        {% else %}
+        <div class="register">
+            <a href="/register"><button class="small_button">Register</button></a>
+            <a href="/sign_in"><h2 class="orange_text">Sign In</h2></a>
+        </div>
+        {% endif %}
+    </div>
+    </div>
+    <script>
+            $('#ajax_art_title').keyup(function(){
+                console.log('came here')
+                $.ajax({
+                    url: '/search',
+                    method: 'post',
+                    data: $(this).parent().serialize(),
+                    success: function(serverResponse){
+                        console.log('success', serverResponse)
+                        $('#placeholder_two').html(serverResponse)
+                    }
+                })
+            })
+            $('#ajax_art_title').click(function() {
+                $('#placeholder_two').css({'visibility':'visible'});
+                return false;
+    });
+    </script>
+
+    <div class="sign_in_register">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        <h1>Create New Product</h1>
+        <form action="/create_item" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>Title <input type="text" name="title"></p>
+            <p>Description <textarea style="background-color: #F9F8F7;" name="description" onfocus="this.value=''" >Enter text here...</textarea></p>
+            <p>Price <input type="number" name="price"></p>
+            <p>Photo <input type="file" name="art_photo"></p>
+            <p>Product File <input type="file" name="art_file"></p>
+            <button>Create</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <h1 style="color: white;">thanks for visiting!</h1>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,380 @@
+@font-face {
+	font-family: 'jaapokki-regular';
+	src: url('/static/first_app/fonts/jaapokki-regular.eot');
+	src: url('/static/first_app/fonts/jaapokki-regular.eot') format('embedded-opentype'),
+		url('/static/first_app/fonts/jaapokki-regular.woff') format('woff'),
+		url('/static/first_app/fonts/jaapokki-regular.ttf') format('truetype'),
+		url('/static/first_app/fonts/jaapokki-regular.svg') format('svg');
+	font-style: normal;
+}
+
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #F9F8F7;
+}
+
+.fixed{
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+}
+
+.header{
+    background-color: white;
+    display: block;
+    position: relative;
+    height: 70px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #E6E6E6;
+}
+
+.search{
+    z-index: 1;
+    position: absolute;
+    left: 30px;
+    top:30px;
+    display: inline-block;
+}
+
+.search input{
+    position: fixed;
+    background-color: #E6E6E6;
+    padding: 4px 30px;
+    width: 150px;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    font-size: 15px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.nav{
+    position: absolute;
+    display: inline-block;
+}
+
+.logo{
+    z-index: 1;
+    position: absolute;
+    display: inline-block;
+}
+
+.orange_text{
+    color: #FFB850;
+    display: inline-block;
+}
+
+.nav h1{
+    margin: 0px 150px;
+    font-size: 22px;
+    padding: 5px;
+    font-family:'jaapokki-regular';
+}
+
+h1 {
+    font-size: 22px;
+    font-family:'jaapokki-regular';
+    color: #FFB850;
+}
+
+
+img{
+    display: inline-block;
+}
+
+.register{
+    position: absolute;
+    display: inline-block;
+    right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    padding: 2px 20px;
+    font-size: 20px;
+    color: white;
+    border-radius: 20px;
+    background-color: #FFB850;
+    border: none;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h2{
+    font-size: 20px;
+    margin: 0px 20px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.center_img{
+    margin-top: 90px;
+    display: block;
+    position: relative;
+}
+
+.aesthetic{
+    position: absolute;
+    font-family:'jaapokki-regular';
+    color: white;
+    top: 30%;
+    left: 35%;
+    transform: translate(-25%, -50%);
+}
+
+.discover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 260%);
+}
+
+.discover button{
+    padding: 6px 33px;
+    font-size: 24px;
+    color: white;
+    border-radius: 30px;
+    background-color: #565CB3;
+    border: none;
+    border-bottom: 3px solid #6A79D3;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.artist_index{
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+    color: white;
+}
+
+.artist_index h3{
+    font-size: 15px;
+    margin: 0px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.artist_index h4{
+    font-size: 20px;
+    margin-top: 0px;
+    font-family:'jaapokki-regular';
+}
+
+.imagine{
+    text-align: center;
+    display: block;
+    padding: 60px 200px;
+    padding-bottom: 20px;
+}
+
+.imagine h4{
+    font-size: 50px;
+    margin: 0px;
+    font-family:'jaapokki-regular';
+    color: #FFB850;
+}
+
+.imagine p{
+    font-size: 15px;
+    margin: 0px;
+    padding: 20px 255px;
+    color: #FFB850;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.cards{
+    display: block;
+    text-align: center;
+}
+
+.card{
+    margin: 0px 50px;
+    margin-bottom: 60px;
+    display: inline-block; 
+    width: 200px;
+    text-align: center;
+}
+
+.card p{
+    margin: 0px;
+    color: #565CB3;
+    font-family:'jaapokki-regular';
+}
+
+.footer{
+    background-color: #FFB850;
+    height: 100px;
+    display: block;
+    text-align: center;
+    padding: 100px;
+    bottom: 0px;
+}
+
+/* SIGN IN REGISTER */
+.sign_in_register{
+    margin: 150px 500px 0px 500px;
+    height: 600px;
+}
+
+.sign_in_register h1{
+    margin: 0px;
+    display: block;
+    color: #FFB850;
+}
+
+.sign_in_register p{
+    color: #FFB850;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.sign_in_register input{
+    margin: 10px;
+    width: 200px;
+    border: none;
+    color: #FFB850;
+    font-size: 15px;
+    background-color: #F9F8F7;
+    border-bottom: 1px solid #FFB850;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.sign_in_register textarea{
+    margin: 0px 10px;
+    width: 200px;
+    border: none;
+    color: #FFB850;
+    border-bottom: 1px solid #FFB850;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.sign_in_register button{
+    margin: 10px 0px 0px 120px;
+}
+
+ul.messages {
+    list-style-type: circle;
+    font-size: 15px;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #FFB850;
+}
+
+/* ARTWORKS */
+.artworks{
+    display: block;
+    width: 100%;
+    height: 175px;
+    margin-bottom: 50px;
+    border: 2px solid #FFDAA9;
+    border-radius: 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    line-height: 0px;
+}
+
+.inline_art{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.artwork{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:175px;
+    height:180px;
+    margin-right: 5px;
+    overflow:hidden; 
+    object-fit: cover;
+}
+
+.artwork img{
+    width:auto;
+    width: 180px;  
+}
+
+.art_in_page{
+    height: 500px;
+    display: block;
+    margin: 10px;
+}
+
+p{
+    font-size: 15px;
+    /* margin: 0px;
+    padding: 20px 255px; */
+    color: #FFB850;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* ARTWORKS PAGE */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Create two equal columns that sits next to each other */
+  .column {
+    /* flex: 20%; */
+    padding: 0 4px;
+    width: 24.4%;
+  }
+  
+  .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+  }
+
+/* SEARCH */
+.searched{
+    margin-top: 30px;
+    height: 150px;
+    background-color: white;
+    overflow: scroll;
+    width: 400px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.search_artworks{
+    display: inline-block;
+    position: absolute;
+    left: 20px;
+    padding: 0px;
+}
+
+.search_artists{
+    display: inline-block;
+    position: absolute;
+    right: 150px;
+    padding: 0px;
+}
+
+.titles{
+    list-style-type: none;
+    font-size: 15px;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: lightgray;
+    margin: 4px;
+}
+
+h5{
+    font-family:'jaapokki-regular';
+    font-size: 15px;
+    color: #FFB850;
+    margin: 0px;
+}
+
+a{
+    text-decoration: none;
+}
