@@ -76,8 +76,8 @@
             <p>Title <input type="text" name="title" value="{{ art.title }}"></p>
             <p>Description <textarea name="description">{{ art.description }}</textarea></p>
             <p>Price <input type="number" name="price" value="{{ art.price }}"></p>
-            <p>Photo <input type="file" name="art_photo" value="{{ art.art_photo.url }}"></p>
-            <p>Product File <input type="file" name="art_file" value="{{ art.art_file.url }}"></p>
+            <p>Photo <input type="file" name="art_photo" value="{{ art.art_photo }}"></p>
+            <p>Product File <input type="file" name="art_file" value="{{ art.art_file }}"></p>
             <button>Save Changes</button>
         </form>
     </div>

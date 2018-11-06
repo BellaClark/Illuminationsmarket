@@ -95,6 +95,11 @@
                 </div>
             </div>
             <div class="inline_art">
+                <div class="artwork">
+                    <a href="/remove_item/{{ a.id }}"><h2 class="orange_text">Remove</h2></a>
+                </div>
+            </div>
+            <div class="inline_art">
                 <div class="artwork" style="position: absolute; right: 70px;">
                     <h2 class="orange_text">Price: ${{ a.price }}</h2>
                 </div>
@@ -105,21 +110,20 @@
         <div class="total_price">
             <h2 class="orange_text">Total Price: ${{ total_price }}</h2>
         </div>
+
+        <div class="pay">
+            <form action="/make_purchase" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="amount" value="{{stripe_price}}" />
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_aGGXWvvluWjcqv30qWbIZBVV"
+                    data-amount="{{stripe_price}}" data-name="Make a Purchase" data-description="{{ user.first_name|title }} {{ user.last_name|title }}"
+                    data-image="/static/first_app/images/illuminations-03.png" data-locale="auto">
+                    </script>
+            </form>
+        </div>
     </div>
 
-    <form action="/make_purchase" method="POST">
-        {% csrf_token %}
-        <input type="hidden" name="amount" value="{{stripe_price}}"/>
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="pk_test_aGGXWvvluWjcqv30qWbIZBVV"
-          data-amount="{{stripe_price}}"
-          data-name="Make a Purchase"
-          data-description="{{ user.first_name|title }} {{ user.last_name|title }}"
-          data-image="/static/first_app/images/illuminations-03.png"
-          data-locale="auto">
-        </script>
-      </form>
+    
 
     <div class="footer">
         <h1 style="color: white;">thanks for visiting!</h1>

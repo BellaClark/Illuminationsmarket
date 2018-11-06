@@ -71,12 +71,11 @@
         </ul>
         {% endif %}
         <h1>Edit Profile</h1>
-        <form action="/create_user" method="POST">
+        <form action="/edit_profile/{{ user.id }}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <p>First Name <input type="text" name="first_name"></p>
-            <p>Last Name <input type="text" name="last_name"></p>
-            <p>Email <input type="email" name="email"></p>
-            <button>Save</button>
+            <p>First Name <input type="text" name="first_name" value="{{ user.first_name }}"></p>
+            <p>Last Name <input type="text" name="last_name" value="{{ user.last_name }}"></p>
+            <button>Save Changes</button>
         </form>
     </div>
 

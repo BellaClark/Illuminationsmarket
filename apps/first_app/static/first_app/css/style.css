@@ -198,6 +198,7 @@ h2{
     display: inline-block; 
     width: 200px;
     text-align: center;
+    vertical-align: top;
 }
 
 .card p{
@@ -208,10 +209,10 @@ h2{
 
 .footer{
     background-color: #FFB850;
-    height: 100px;
+    height: 50px;
     display: block;
     text-align: center;
-    padding: 100px;
+    padding: 30px;
     bottom: 0px;
 }
 
@@ -378,3 +379,10 @@ h5{
 a{
     text-decoration: none;
 }
+
+
+/* CART */
+.pay{
+    right: 100px;
+    padding: 20px;
+} 

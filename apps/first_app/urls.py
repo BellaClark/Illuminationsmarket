@@ -20,7 +20,9 @@ urlpatterns = [
     url(r'^edit_product/(?P<art_id>\d+)$', views.edit_product),
     url(r'^edit_this_product/(?P<art_id>\d+)$', views.edit_this_product),
     url(r'^delete_product/(?P<art_id>\d+)/(?P<user_id>\d+)$', views.delete_product),
+    url(r'^edit_my_profile/(?P<user_id>\d+)$', views.edit_my_profile),
     url(r'^edit_profile/(?P<user_id>\d+)$', views.edit_profile),
     url(r'^delete_profile/(?P<user_id>\d+)$', views.delete_profile),
     url(r'^make_purchase$', views.make_purchase),
+    url(r'^remove_item/(?P<art_id>\d+)$', views.remove_item),
 ]

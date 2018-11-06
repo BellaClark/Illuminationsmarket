@@ -77,8 +77,9 @@
         
         {% if 'user_id' in request.session %}
         {% if user.id == sesh %}
+            <!-- <a href="https://dashboard.stripe.com/oauth/authorize?response_type=code&client_id=ca_DgVt96fNd7Yp6IMlgH3NIHxeOrCatdi4&scope=read_write&redirect_uri=https://localhost:8000/stripe_callback"><button class="small_button">Begin Selling</button></a> -->
             <a href="/new_artwork"><button class="small_button">Create New Product</button></a>
-            <a href="/edit_profile/{{ user.id }}"><button class="small_button">Edit My Profile</button></a>
+            <!-- <a href="/edit_my_profile/{{ user.id }}"><button class="small_button">Edit My Profile</button></a> -->
             <a href="/delete_profile/{{ user.id }}"><button class="small_button">Delete My Profile</button></a>
         {% endif %}
         {% endif %}
