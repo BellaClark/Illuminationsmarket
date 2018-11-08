@@ -1,0 +1,1 @@
+web: gunicorn illuminationsmarket.wsgi --log-file -
