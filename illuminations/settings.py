@@ -141,7 +141,6 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 
-DEBUG = config('DEBUG', default=False, cast=bool)
 import dj_database_url
 
 DATABASES = {
