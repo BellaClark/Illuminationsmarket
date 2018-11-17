@@ -14,7 +14,7 @@ itsdangerous==0.24
 Jinja2==2.10
 MarkupSafe==1.0
 Pillow==5.2.0
-psycopg2==2.6.2
+psycopg2==2.7.5
 pycparser==2.18
 pytz==2018.5
 requests==2.19.1
