@@ -105,7 +105,7 @@ def sign_me_in(request):
 
 def logout(request):
     request.session.clear()
-    return redirect("/illuminations")
+    return redirect("/")
 
 def artists(request):
     variables = {
@@ -294,7 +294,7 @@ def edit_profile(request, user_id, methods = 'POST'):
 def delete_profile(request, user_id):
     User.objects.get(id = user_id).delete()
     request.session.clear()
-    return redirect("/illuminations")
+    return redirect("/")
 
 def search(request):
     variables = {
