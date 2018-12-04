@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'm3el3(*l7v5_mp)w(wwlg@ulyvz!=o%08iv9&(t@ldxqyb2jdv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,28 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'apps/first_app/static')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
+
+# AWS ASSETS STORAGE FOR PRODUCTION
+AWS_ACCESS_KEY_ID = 'AKIAJ3ROXZJDTGIH76NQ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'illuminations-assets-bucket'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'illuminationsmarket/static'),
+# ]
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+# AWS MEDIA USER ASSETS FOR PRODUCTION
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'mysite/static'),
+# ]
+
+DEFAULT_FILE_STORAGE = 'illuminationsmarket.storage_backends.MediaStorage'  # <-- here is where we reference storage_backends file
