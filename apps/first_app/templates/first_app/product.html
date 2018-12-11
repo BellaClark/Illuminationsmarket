@@ -68,7 +68,12 @@
         <p>{{ art.description }}</p>
         <img class="art_in_page" src="{{ art.art_photo.url }}">
         <h2 class="orange_text">Price: ${{ art.price }}</h2>
+        {% if 'user_id' in request.session %}
         <a href="/add_to_cart/{{ art.id }}/{{ user.id }}"><button class="small_button">Add to Cart</button></a>
+        {% else %}
+        <h2 class="orange_text">Sign in to add to cart:</h2>
+        <a href="/sign_in"><button class="small_button">Sign In</button></a>
+        {% endif %}
         {% if art.user.id == user.id %}
             <a href="/edit_product/{{ art.id }}"><button class="small_button">Edit</button></a>
             <a href="/delete_product/{{ art.id }}/{{ user.id }}"><button class="small_button">Delete</button></a>
